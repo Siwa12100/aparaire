@@ -1,6 +1,6 @@
 name: aparaire
 version: '1.0-SNAPSHOT'
 main: siwa.valorium.Aparaire
-api-version: '1.18'
+api-version: '1.16'
 description: Plugin anti-interaction pour les non-ops
 author: Siwa

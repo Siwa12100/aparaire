@@ -38,7 +38,7 @@ public final class Aparaire extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onEntityDamage(EntityDamageByEntityEvent event) {
-        if (event.getDamager() instanceof Player player && !player.isOp()) {
+        if (event.getDamager() instanceof Player && !((Player) event.getDamager()).isOp()) {
             event.setCancelled(true);
         }
     }
