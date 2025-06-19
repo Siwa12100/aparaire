@@ -4,3 +4,9 @@ main: siwa.valorium.Aparaire
 api-version: '1.18'
 description: Plugin anti-interaction pour les non-ops
 author: Siwa
+
+commands:
+  aparairereload:
+    description: Recharge la whitelist utilisée par le plugin Aparaire.
+    usage: /<command>
+    permission: aparaire.reload
