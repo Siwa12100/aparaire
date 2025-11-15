@@ -1,12 +1,18 @@
-name: aparaire
-version: '1.0-SNAPSHOT'
+name: Aparaire
+version: 2.0
 main: siwa.valorium.Aparaire
-api-version: '1.18'
-description: Plugin anti-interaction pour les non-ops
+api-version: 1.19
 author: Siwa
+description: Système de spectateur restreint pour visiteurs
 
 commands:
   aparairereload:
-    description: Recharge la whitelist utilisée par le plugin Aparaire.
+    description: Recharge la whitelist et la configuration
     usage: /<command>
     permission: aparaire.reload
+    permission-message: Tu n'as pas la permission.
+
+permissions:
+  aparaire.reload:
+    description: Permet de recharger le plugin
+    default: op

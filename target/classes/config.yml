@@ -1,1 +1,229 @@
-mode-confort: true
+# ════════════════════════════════════════════════════════════════════
+# Configuration Aparaire - Système de spectateur restreint
+# ════════════════════════════════════════════════════════════════════
+#
+# Ce plugin permet aux visiteurs d'explorer votre serveur sans pouvoir
+# modifier le monde. Par défaut, TOUT est bloqué sauf :
+#   - Se déplacer (marcher, courir, sauter, nager, voler en elytra)
+#   - Monter dans les bateaux et minecarts
+#   - Activer les plaques de pression
+#   - Sneak (s'accroupir)
+#
+# Pour autoriser des actions supplémentaires, passez les protections
+# correspondantes à "false".
+#
+# ════════════════════════════════════════════════════════════════════
+
+# ┌─────────────────────────────────────────────────────────────────┐
+# │                    PROTECTIONS : BLOCS                          │
+# └─────────────────────────────────────────────────────────────────┘
+protections:
+  block:
+    # Empêche les visiteurs de casser des blocs
+    break: true
+
+    # Empêche les visiteurs de placer des blocs
+    place: true
+
+  # ┌─────────────────────────────────────────────────────────────────┐
+  # │                    PROTECTIONS : COMBAT                         │
+  # └─────────────────────────────────────────────────────────────────┘
+  damage:
+    # Empêche les visiteurs d'infliger des dégâts (PVP, PVE)
+    outgoing: true
+
+    # Rend les visiteurs invulnérables (pas de mort, pas de faim)
+    incoming: true
+
+  # ┌─────────────────────────────────────────────────────────────────┐
+  # │                    PROTECTIONS : FAIM                           │
+  # └─────────────────────────────────────────────────────────────────┘
+  hunger:
+    # Gèle la barre de faim des visiteurs (ne baisse jamais)
+    freeze: true
+
+  # ┌─────────────────────────────────────────────────────────────────┐
+  # │                 PROTECTIONS : INVENTAIRES                       │
+  # └─────────────────────────────────────────────────────────────────┘
+  inventory:
+    # Bloque l'accès aux conteneurs (coffres, barils, fours, etc.)
+    containers: true
+
+  # ┌─────────────────────────────────────────────────────────────────┐
+  # │              PROTECTIONS : POSTES DE TRAVAIL                    │
+  # └─────────────────────────────────────────────────────────────────┘
+  workstations:
+    # Bloque l'accès aux postes de travail (craft, enclume, enchantement, etc.)
+    block: true
+
+  # ┌─────────────────────────────────────────────────────────────────┐
+  # │                PROTECTIONS : INTERACTIONS                       │
+  # └─────────────────────────────────────────────────────────────────┘
+  interact:
+    # Bloque les interactions avec les blocs (boutons, leviers, portes, etc.)
+    # ⚠️ Les plaques de pression restent TOUJOURS autorisées (hardcodé)
+    blocks: true
+
+    # Bloque les interactions avec les entités (villageois, item frames, etc.)
+    entities: true
+
+  # ┌─────────────────────────────────────────────────────────────────┐
+  # │                  PROTECTIONS : VÉHICULES                        │
+  # └─────────────────────────────────────────────────────────────────┘
+  vehicles:
+    # Empêche les visiteurs de monter dans les véhicules
+    # ⚠️ Les bateaux et minecarts restent TOUJOURS autorisés (hardcodé)
+    use: false
+
+  # ┌─────────────────────────────────────────────────────────────────┐
+  # │                    PROTECTIONS : ITEMS                          │
+  # └─────────────────────────────────────────────────────────────────┘
+  items:
+    # Empêche les visiteurs de jeter des items
+    drop: true
+
+    # Empêche les visiteurs de ramasser des items au sol
+    pickup: true
+
+  # ┌─────────────────────────────────────────────────────────────────┐
+  # │                    PROTECTIONS : SEAUX                          │
+  # └─────────────────────────────────────────────────────────────────┘
+  buckets:
+    # Empêche de remplir des seaux (eau, lave, poudre de neige, etc.)
+    fill: true
+
+    # Empêche de vider des seaux
+    empty: true
+
+  # ┌─────────────────────────────────────────────────────────────────┐
+  # │                      PROTECTIONS : LIT                          │
+  # └─────────────────────────────────────────────────────────────────┘
+  bed:
+    # Empêche les visiteurs de dormir dans les lits
+    sleep: true
+
+  # ┌─────────────────────────────────────────────────────────────────┐
+  # │                   PROTECTIONS : PORTAILS                        │
+  # └─────────────────────────────────────────────────────────────────┘
+  portals:
+    # Bloque l'utilisation des portails (Nether, End)
+    use: true
+
+  # ┌─────────────────────────────────────────────────────────────────┐
+  # │                 PROTECTIONS : TÉLÉPORTATION                     │
+  # └─────────────────────────────────────────────────────────────────┘
+  teleport:
+    # Bloque les perles de l'ender
+    ender_pearl: true
+
+    # Bloque les chorus fruits
+    # ⚠️ Mets à "false" si tu actives le mode confort avec chorus fruits
+    chorus: true
+
+  # ┌─────────────────────────────────────────────────────────────────┐
+  # │                 PROTECTIONS : PROJECTILES                       │
+  # └─────────────────────────────────────────────────────────────────┘
+  projectiles:
+    # Empêche de lancer des projectiles (flèches, tridents, boules de neige, etc.)
+    launch: true
+
+  # ┌─────────────────────────────────────────────────────────────────┐
+  # │                   PROTECTIONS : CRAFTING                        │
+  # └─────────────────────────────────────────────────────────────────┘
+  crafting:
+    # Bloque les clics dans les inventaires de craft et les déplacements d'items
+    clicks: true
+
+# ┌─────────────────────────────────────────────────────────────────┐
+# │                      RESTRICTIONS SOCIALES                       │
+# └─────────────────────────────────────────────────────────────────┘
+restrictions:
+  chat:
+    # Active le blocage du chat pour les visiteurs
+    # true = les visiteurs ne peuvent pas écrire dans le chat
+    enabled: true
+
+  commands:
+    # Active le filtrage des commandes
+    # true = seules les commandes de la liste "allowed" sont autorisées
+    enabled: true
+
+    # Liste des commandes autorisées pour les visiteurs
+    # Les autres commandes seront bloquées
+    allowed:
+      - "help"
+      - "list"
+
+# ┌─────────────────────────────────────────────────────────────────┐
+# │                        MODE CONFORT                              │
+# └─────────────────────────────────────────────────────────────────┘
+mode-confort:
+  # Active le mode confort (donne des items utiles aux visiteurs)
+  # ⚠️ Désactivé par défaut pour ne rien donner automatiquement
+  enabled: false
+
+  # Donne une longue-vue à la connexion (pour observer de loin)
+  spyglass: true
+
+  # Donne des chorus fruits (téléportation)
+  # ⚠️ Si activé, pense à mettre protections.teleport.chorus à false
+  chorus: false
+
+  # Quantité de chorus fruits donnés (si chorus: true)
+  chorus-amount: 10
+
+  # Si false : retire automatiquement les items donnés quand le joueur
+  # est ajouté à la whitelist (devient autorisé)
+  keep-starter-items: true
+
+# ┌─────────────────────────────────────────────────────────────────┐
+# │              RECHARGEMENT AUTO DE LA WHITELIST                   │
+# └─────────────────────────────────────────────────────────────────┘
+whitelist:
+  # Recharge automatiquement la whitelist à chaque connexion de joueur
+  # Recommandé : true (détecte immédiatement les changements)
+  auto-reload-on-join: true
+
+  # Recharge automatiquement quand quelqu'un tape /whitelist
+  # (fonctionne même depuis la console)
+  auto-reload-on-command: true
+
+  # Recharge périodiquement la whitelist (en secondes)
+  # 0 = désactivé
+  # Exemple : 300 = recharge toutes les 5 minutes
+  auto-reload-period-seconds: 0
+
+# ┌─────────────────────────────────────────────────────────────────┐
+# │                          MESSAGES                                │
+# └─────────────────────────────────────────────────────────────────┘
+messages:
+  # Préfixe des messages du plugin
+  prefix: "§7[Aparaire] "
+
+  # Message de permission refusée (commande réservée aux OPs)
+  no-permission: "§cTu n'as pas la permission."
+
+  # Message d'accès conteneur refusé (coffres, barils, fours, etc.)
+  container-denied: "§cTu n'es pas autorisé à accéder à ce conteneur."
+
+  # Message d'accès poste de travail refusé (table de craft, enclume, etc.)
+  workstation-denied: "§cTu n'es pas autorisé à utiliser ce poste de travail."
+
+  # Message d'interaction entité refusée (villageois, item frames, etc.)
+  entity-denied: "§cTu n'es pas autorisé à interagir avec cette entité."
+
+  # Message de lit refusé
+  bed-denied: "§cTu n'es pas autorisé à dormir."
+
+  # Message de portail refusé
+  portal-denied: "§cTu n'es pas autorisé à utiliser les portails."
+
+  # Message de chat refusé
+  chat-denied: "§cTu n'es pas autorisé à écrire dans le chat."
+
+  # Message de commande refusée
+  command-denied: "§cTu n'es pas autorisé à utiliser cette commande."
+
+  # Message affiché quand les items de départ sont retirés
+  # (si keep-starter-items: false et le joueur devient autorisé)
+  items-removed: "§aItems de départ retirés (tu es maintenant autorisé)."

@@ -1,2 +1,5 @@
-siwa\valorium\Aparaire.class
-siwa\valorium\Aparaire$1.class
+siwa/valorium/Aparaire.class
+siwa/valorium/Aparaire$1.class
+siwa/valorium/config/ConfigValidator.class
+siwa/valorium/config/ConfigFileWatcher.class
+siwa/valorium/config/ConfigManager.class
