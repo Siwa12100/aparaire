@@ -1,5 +1,12 @@
 siwa/valorium/Aparaire.class
-siwa/valorium/Aparaire$1.class
+siwa/valorium/EmpBloqueur/EmpEasyPlaceLogQueryCommand$PlayerStats.class
+siwa/valorium/EmpBloqueur/EmpEasyPlaceFileLogger.class
 siwa/valorium/config/ConfigValidator.class
+siwa/valorium/EmpBloqueur/EmpEasyPlaceLogEntry.class
+siwa/valorium/EmpBloqueur/EmpEasyPlaceDetector$EasyPlaceSession.class
 siwa/valorium/config/ConfigFileWatcher.class
 siwa/valorium/config/ConfigManager.class
+siwa/valorium/whitelist/WhitelistManager$1.class
+siwa/valorium/EmpBloqueur/EmpEasyPlaceLogQueryCommand.class
+siwa/valorium/whitelist/WhitelistManager.class
+siwa/valorium/EmpBloqueur/EmpEasyPlaceDetector.class

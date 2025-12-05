@@ -9,11 +9,14 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
+import siwa.valorium.whitelist.WhitelistManager;
+
 /**
  * Gestionnaire centralisé de la configuration avec système de snapshot
  */
 public class ConfigManager {
 
+    private final WhitelistManager whitelistManager;
     private final JavaPlugin plugin;
     @SuppressWarnings("NonConstantLogger")
     private final Logger logger;
@@ -27,13 +30,12 @@ public class ConfigManager {
     // Tâche périodique de reload whitelist
     private BukkitTask reloadTask;
 
-    public ConfigManager(JavaPlugin plugin) {
+    public ConfigManager(WhitelistManager whitelistManager, JavaPlugin plugin) {
+        this.whitelistManager = whitelistManager;
         this.plugin = plugin;
         this.logger = plugin.getLogger();
         this.validator = new ConfigValidator(logger);
         this.configFile = new File(plugin.getDataFolder(), "config.yml");
-
-        // Charge la config initiale
         loadInitialConfig();
     }
 
@@ -105,7 +107,7 @@ public class ConfigManager {
             reloadTask = plugin.getServer().getScheduler().runTaskTimer(plugin, () -> {
                 // Appelle la méthode reloadWhitelist du plugin principal
                 if (plugin instanceof siwa.valorium.Aparaire aparaire) {
-                    aparaire.reloadWhitelist();
+                    whitelistManager.reloadWhitelist();
                     logger.info("Whitelist rechargée automatiquement (tâche périodique).");
                 }
             }, 20L * newPeriod, 20L * newPeriod);

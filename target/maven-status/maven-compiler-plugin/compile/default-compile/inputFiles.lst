@@ -1,4 +1,9 @@
 /home/siwa/dev/minecraft/aparaire/src/main/java/siwa/valorium/Aparaire.java
+/home/siwa/dev/minecraft/aparaire/src/main/java/siwa/valorium/EmpBloqueur/EmpEasyPlaceDetector.java
+/home/siwa/dev/minecraft/aparaire/src/main/java/siwa/valorium/EmpBloqueur/EmpEasyPlaceFileLogger.java
+/home/siwa/dev/minecraft/aparaire/src/main/java/siwa/valorium/EmpBloqueur/EmpEasyPlaceLogEntry.java
+/home/siwa/dev/minecraft/aparaire/src/main/java/siwa/valorium/EmpBloqueur/EmpEasyPlaceLogQueryCommand.java
 /home/siwa/dev/minecraft/aparaire/src/main/java/siwa/valorium/config/ConfigFileWatcher.java
 /home/siwa/dev/minecraft/aparaire/src/main/java/siwa/valorium/config/ConfigManager.java
 /home/siwa/dev/minecraft/aparaire/src/main/java/siwa/valorium/config/ConfigValidator.java
+/home/siwa/dev/minecraft/aparaire/src/main/java/siwa/valorium/whitelist/WhitelistManager.java

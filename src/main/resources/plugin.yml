@@ -1,18 +1,38 @@
 name: Aparaire
 version: 2.0
 main: siwa.valorium.Aparaire
-api-version: 1.19
+api-version: 1.21
 author: Siwa
 description: Système de spectateur restreint pour visiteurs
 
 commands:
   aparairereload:
-    description: Recharge la whitelist et la configuration
-    usage: /<command>
-    permission: aparaire.reload
-    permission-message: Tu n'as pas la permission.
+    description: "Recharge la config d'Aparaire et d'EmpBloqueur."
+    usage: "/aparairereload"
+    permission: "aparairereload.use"
+    permission-message: "Tu n'as pas la permission."
+
+  empbloqueur:
+    description: "Commandes d'administration d'EmpBloqueur."
+    usage: "/empbloqueur"
+    permission: "empbloqueur.admin"
+    permission-message: "Tu n'as pas la permission."
+
+  empsuspects:
+    description: "Affiche les joueurs suspects d'EasyPlace sur une période donnée."
+    usage: "/empsuspects [jours]"
+    permission: "empbloqueur.query"
+    permission-message: "Tu n'as pas la permission."
 
 permissions:
-  aparaire.reload:
-    description: Permet de recharger le plugin
+  aparairereload.use:
+    description: "Permet de recharger le plugin Aparaire + EmpBloqueur."
+    default: op
+
+  empbloqueur.admin:
+    description: "Admin EmpBloqueur."
+    default: op
+
+  empbloqueur.query:
+    description: "Peut interroger les logs EasyPlace."
     default: op

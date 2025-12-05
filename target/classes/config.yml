@@ -15,6 +15,17 @@
 # ════════════════════════════════════════════════════════════════════
 
 # ┌─────────────────────────────────────────────────────────────────┐
+# │                        WHITELIST                                │
+# └─────────────────────────────────────────────────────────────────┘
+
+whitelist:
+  # Active ou désactive TOUT le système de restriction basé sur la whitelist.
+  # - true  => seuls les joueurs whitelists/OP sont "autorisés" et ne sont pas bloqués.
+  # - false => TOUT LE MONDE est traité comme autorisé (le plugin ne bloque plus rien).
+  enabled: true
+
+
+# ┌─────────────────────────────────────────────────────────────────┐
 # │                    PROTECTIONS : BLOCS                          │
 # └─────────────────────────────────────────────────────────────────┘
 protections:

@@ -1,0 +1,77 @@
+empBloqueur:
+  # Active ou désactive complètement la détection
+  enabled: true
+
+  # Filtrage des joueurs concernés
+  only-survival: true        # ne détecter que les joueurs en survie
+  ignore-creative: true      # ignorer les joueurs en créatif
+  ignore-spectator: true     # ignorer les spectateurs
+
+  detection:
+    # Distance max (en blocs) entre les yeux du joueur et le centre du bloc placé
+    max-distance-blocks: 5.2
+
+    # Taux max de placement en blocs / seconde (au-delà → suspicion de macro / easy place)
+    max-blocks-per-second: 15.0
+
+    # Angle max (en degrés) entre la direction de regard du joueur
+    # et le vecteur vers le bloc placé (au-delà → bizarre)
+    angle-max-degrees: 35.0
+
+    # Vérifier si le bloc a un support valide (blockAgainst non-air et adjacent)
+    check-air-support: true
+
+    suspicion-points:
+      # Points si distance > max-distance-blocks
+      distance: 3
+
+      # Points si bloc posé sans support valide (dans le vide ou non adjacent)
+      support-air: 5
+
+      # Points si angle impossible ou raytrace incohérent (ne vise aucun bloc)
+      angle: 4
+
+      # Points si blocs/s > max-blocks-per-second
+      rate: 3
+
+    # Score total d'une session à partir duquel elle est considérée très suspecte
+    suspicion-threshold-session: 15
+
+    # Score pour UN bloc à partir duquel on peut l'annuler immédiatement
+    suspicion-threshold-cancel: 8
+
+  actions:
+    # Annuler les placements jugés suspects (voir thresholds ci-dessus)
+    cancel-placement: true
+
+    # Notifier le staff quand une session devient très suspecte
+    notify-staff: true
+    notify-staff-permission: "empbloqueur.notify"
+
+    # Permission de bypass total de la détection (staff, builders, etc.)
+    bypass-permission: "empbloqueur.bypass"
+
+  logging:
+    # Active ou non le système de log (sessions suspectes)
+    enabled: true
+
+    # Log des sessions suspectes dans la console
+    console: true
+
+    file:
+      # Écriture dans un fichier (TODO à implémenter dans le code)
+      enabled: false
+      # Chemin RELATIF depuis le dataFolder du plugin
+      path: "logs/easyplace.log"
+
+    # Nombre minimum de blocs suspects dans une session
+    # pour qu'elle soit loggée (évite le bruit)
+    min-blocks-per-session: 5
+
+    # Inactivité (en secondes) avant de clôturer une session
+    # (au prochain block place ou au quit)
+    inactivity-seconds-to-close-session: 5
+
+    # Nombre max de sessions gardées en mémoire
+    # (pour /empbloqueur recent)
+    history-max-entries: 100
