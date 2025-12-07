@@ -99,7 +99,7 @@ public final class Aparaire extends JavaPlugin {
         // ---------------------------------------------
         if (command.getName().equalsIgnoreCase("aparairereload")) {
 
-            if (sender instanceof Player p && !p.isOp()) {
+            if (sender instanceof Player p && (!p.isOp() && !p.hasPermission("aparairereload.use"))) {
                 sender.sendMessage("§7[Aparaire] §cTu n'as pas la permission.");
                 return true;
             }

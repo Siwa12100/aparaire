@@ -21,6 +21,8 @@ empBloqueur:
     # Vérifier si le bloc a un support valide (blockAgainst non-air et adjacent)
     check-air-support: true
 
+    light-wood-farm-mode: true  # Allège la vérif pour fermes à bois (pousses, bambou, etc.)
+
     suspicion-points:
       # Points si distance > max-distance-blocks
       distance: 3

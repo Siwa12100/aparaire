@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -39,6 +40,7 @@ public final class EmpEasyPlaceDetector implements Listener {
     private boolean onlySurvival;
     private boolean ignoreCreative;
     private boolean ignoreSpectator;
+    private boolean lightWoodFarmMode;
 
     private boolean checkAirSupport;
     private double maxDistanceBlocks;
@@ -104,6 +106,7 @@ public final class EmpEasyPlaceDetector implements Listener {
         onlySurvival = empConfig.getBoolean("empBloqueur.only-survival", true);
         ignoreCreative = empConfig.getBoolean("empBloqueur.ignore-creative", true);
         ignoreSpectator = empConfig.getBoolean("empBloqueur.ignore-spectator", true);
+        lightWoodFarmMode = empConfig.getBoolean("empBloqueur.detection.light-wood-farm-mode", true);
 
         checkAirSupport = empConfig.getBoolean("empBloqueur.detection.check-air-support", true);
         maxDistanceBlocks = empConfig.getDouble("empBloqueur.detection.max-distance-blocks", 5.2D);
@@ -130,6 +133,7 @@ public final class EmpEasyPlaceDetector implements Listener {
         minBlocksPerSession = empConfig.getInt("empBloqueur.logging.min-blocks-per-session", 5);
 
         int inactivitySeconds = empConfig.getInt("empBloqueur.logging.inactivity-seconds-to-close-session", 5);
+        
         inactivityMillisToCloseSession = inactivitySeconds * 1000L;
 
         historyMaxEntries = empConfig.getInt("empBloqueur.logging.history-max-entries", 100);
@@ -168,6 +172,9 @@ public final class EmpEasyPlaceDetector implements Listener {
         Block placed = event.getBlockPlaced();
         Block against = event.getBlockAgainst();
         World world = placed.getWorld();
+        Material placedType = placed.getType();
+        
+        boolean isWoodFarmBlock = isWoodFarmFriendlyBlock(placedType);
 
         Location blockCenter = placed.getLocation().add(0.5, 0.5, 0.5);
         Location eyeLoc = player.getEyeLocation();
@@ -236,6 +243,13 @@ public final class EmpEasyPlaceDetector implements Listener {
         if (blocksPerSecond > maxBlocksPerSecond) {
             ruleRate = true;
             suspicionScoreForThisBlock += suspicionPointsRate;
+        }
+
+        if (!(lightWoodFarmMode && isWoodFarmBlock)) {
+            if (blocksPerSecond > maxBlocksPerSecond) {
+                ruleRate = true;
+                suspicionScoreForThisBlock += suspicionPointsRate;
+            }
         }
 
         session.updateBoundingBox(blockCenter);
@@ -535,4 +549,15 @@ public final class EmpEasyPlaceDetector implements Listener {
             avgDistance += (distance - avgDistance) / distanceSamples;
         }
     }
+
+    private boolean isWoodFarmFriendlyBlock(Material type) {
+        // Pousses classiques
+        if (type.name().endsWith("_SAPLING")) {
+            return true;
+        }
+
+        // Bambou et propagule mangrove (fermes à bois / végétal)
+        return type == Material.BAMBOO;
+    }
+
 }
